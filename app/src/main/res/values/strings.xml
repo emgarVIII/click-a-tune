@@ -10,4 +10,5 @@
    <string name="login_button_label">Login</string>
     <string name="guest_button_label">Play as Guest</string>
     <string name="player_name"></string>
+    <string name="logged_in_as">Logged in as: emgar</string>
 </resources>

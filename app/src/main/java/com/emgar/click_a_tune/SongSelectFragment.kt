@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.emgar.click_a_tune.databinding.FragmentLoginBinding
+import com.emgar.click_a_tune.databinding.FragmentSongselectBinding
 
 /**
- * A simple [Fragment] subclass as the second destination in the navigation.
+ * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class LoginFragment : Fragment() {
+class SongSelectFragment : Fragment() {
 
-    private var _binding: FragmentLoginBinding? = null
+    private var _binding: FragmentSongselectBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,18 +23,15 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentSongselectBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
-        }
+//        binding.buttonLogin.setOnClickListener {
+//            findNavController().navigate(R.id.)
+//        }
     }
 
     override fun onDestroyView() {

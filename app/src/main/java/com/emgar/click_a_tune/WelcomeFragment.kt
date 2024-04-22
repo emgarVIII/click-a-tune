@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.emgar.click_a_tune.databinding.FragmentSongselectBinding
 import com.emgar.click_a_tune.databinding.FragmentWelcomeBinding
 
 /**
@@ -32,8 +33,14 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Listener for the Play as Guest button
+        binding.buttonGuest.setOnClickListener {
+            findNavController().navigate(R.id.action_welcomeFragment_to_songSelectFragment)
+        }
+
+        // Listener for the Login button
         binding.buttonLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_WelcomeFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_welcomeFragment_to_loginFragment)
         }
     }
 
