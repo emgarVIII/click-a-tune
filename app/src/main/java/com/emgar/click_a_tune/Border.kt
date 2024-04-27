@@ -5,12 +5,8 @@ import android.util.Log
 import android.view.View
 import kotlin.random.Random
 
-class Border(private val borders: List<View>,
-             private val goalOrder: IntArray
+class Border(private val borders: List<View>
 ) {
-    private var goal = 0
-    private var goalOrderIdx = 0
-    private val goalBorderColor = Color.rgb(0, 128, 0)
     private var minX = 0
     private var maxX = 0
     private var minY = 0
@@ -29,6 +25,7 @@ class Border(private val borders: List<View>,
     }
 
     init {
+        Log.d("MinX MaxX MinY MaxY", String.format("%d %d %d %d", minX, maxX, minY, maxY))
         minX = (borders[2].x + borders[2].width).toInt()
         maxX = borders[3].x.toInt()
         minY = (borders[0].y + borders[0].height).toInt()
@@ -52,12 +49,7 @@ class Border(private val borders: List<View>,
     fun randomY(puckHeight: Int) : Float {
         return random.nextInt(minY, maxY - puckHeight).toFloat()
     }
-    fun nextGoal() : Type {
-        goal = goalOrder[goalOrderIdx++%goalOrder.size]
-        assert(goal in 0..3)
-        borders[goal].setBackgroundColor(goalBorderColor)
-        return Type.getByInt(goal)!! // non-null because goal in 0..3
-    }
+
     fun resetBorderColors() {
         // Reset frame
         borders.forEach { it.setBackgroundColor(Color.BLACK) }

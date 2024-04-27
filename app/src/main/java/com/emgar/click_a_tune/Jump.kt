@@ -4,35 +4,30 @@ import android.content.res.Resources
 import android.view.View
 import java.time.OffsetDateTime
 import android.util.Log
+import kotlin.random.Random
 
 class Jump(private val puck: View,
            private val border: Border
 ) {
-    // XXX remember some X and Y values and any other state
-    private val positions = listOf(
-        Pair(border.minX(), border.minY()), // top left doesn't change
-        Pair(border.maxX() - dpToPx(50), border.minY()), // top right, subtract 50dp from x
-        Pair(border.maxX() - dpToPx(50), border.maxY() - dpToPx(50)), // bottom right, subtract 50dp from both x and y
-        Pair(border.minX(), border.maxY() - dpToPx(50))  // bottom left, subtract 50dp from y
-    )
+    private val puckMinX = border.minX().toFloat()
+    private val puckMaxX = (border.maxX() - puck.width).toFloat()
+    private val puckMinY= border.minY().toFloat()
+    private val puckMaxY = (border.maxY() - puck.height).toFloat()
+
+    private fun placePuck() {
+        Log.d("puckMaxX", "$puckMaxX")
+        puck.x = Random.nextFloat() * (puckMaxX - puckMinX) + puckMinX
+        puck.y = Random.nextFloat() * (puckMaxY - puckMinY) + puckMinY
+        Log.d("Jump", "Puck position - X: $puck.x, Y: $puck.y")
+
+        puck.visibility = View.VISIBLE
+    }
 
     private fun dpToPx(dp: Int): Int {
         return (dp * Resources.getSystem().displayMetrics.density).toInt()
     }
 
     private var currentPositionIndex = 0
-
-    private fun placePuck() {
-        // XXX Write me
-        val position = positions[currentPositionIndex]
-
-        puck.x = position.first.toFloat()
-        puck.y = position.second.toFloat()
-
-        Log.d("Jump", "Placing puck at: x=${puck.x}, y=${puck.y}")
-
-        currentPositionIndex = (currentPositionIndex + 1) % positions.size
-    }
 
     init {
         puck.setOnClickListener { placePuck() }
@@ -42,15 +37,27 @@ class Jump(private val puck: View,
         puck.visibility = View.VISIBLE
         puck.isClickable = true
         // XXX Write me
+        Log.d("Jump", "puckMinX: $puckMinX, puckMaxX: $puckMaxX, puckMinY: $puckMinY, puckMaxY: $puckMaxY")
         border.resetBorderColors()
-        currentPositionIndex = 0 // Start from the top left
         placePuck()
     }
+
+    fun invis(boolean: Boolean){
+        if (boolean){
+            puck.visibility = View.INVISIBLE
+            puck.isClickable = false
+        }else{
+            puck.visibility = View.VISIBLE
+            puck.isClickable = true
+        }
+
+
+    }
+
     fun finish() {
         // XXX Write me
         // mimic demo behavior - it pertains through gamemodes
         //puck.visibility = View.INVISIBLE
         puck.isClickable = false
-
     }
 }

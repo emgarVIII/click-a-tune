@@ -1,25 +1,44 @@
 import android.content.Context
 import android.media.MediaPlayer
+import android.util.Log
 
 class MusicPlayer(private val context: Context, private val audioFilename: String) {
     private var mediaPlayer: MediaPlayer? = null
 
     fun startMusic() {
-        try {
-            val assetFileDescriptor = context.assets.openFd("music/$audioFilename")
-            mediaPlayer = MediaPlayer().apply {
-                setDataSource(assetFileDescriptor.fileDescriptor, assetFileDescriptor.startOffset, assetFileDescriptor.length)
-                prepare()
-                start()
+        if (mediaPlayer == null) {
+            try {
+                val assetFileDescriptor = context.assets.openFd("music/$audioFilename")
+                mediaPlayer = MediaPlayer().apply {
+                    setDataSource(assetFileDescriptor.fileDescriptor, assetFileDescriptor.startOffset, assetFileDescriptor.length)
+                    prepare()
+                    start()
+                    Log.d("MusicPlayer", "Music started: $audioFilename")
+                }
+
+            } catch (e: Exception) {
+                Log.e("MusicPlayer", "Error playing music", e)
             }
-        } catch (e: Exception) {
-            e.printStackTrace() // Print stack trace if there is an error
+        } else {
+            Log.d("MusicPlayer", "Music is already playing")
         }
     }
 
     fun stopMusic() {
-        mediaPlayer?.stop()
+        if (mediaPlayer?.isPlaying == true) {
+            mediaPlayer?.stop()
+            Log.d("MusicPlayer", "Music stopped")
+        }
         mediaPlayer?.release()
         mediaPlayer = null
     }
+
+    fun getCurrentPosition(): Int {
+        return mediaPlayer?.currentPosition ?: 0
+    }
 }
+
+
+
+
+
