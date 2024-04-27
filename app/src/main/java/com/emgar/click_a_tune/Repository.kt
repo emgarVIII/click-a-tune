@@ -20,14 +20,26 @@ class Repository {
                     "We Won't Be Alone (feat. Laura Brehm)",
                     "Feint",
                     "3:39",
-                    "newBG.jpg",
+                    "wwba.jpg",
                     "Feint - We Won't Be Alone (feat. Laura Brehm).mp3",
-                    0)
-//                SongInfo(
-//                    "What's Mine",
-//                    R.raw.whats_mine_excerpt,
-//                    "1:15",
-//                    1)
+                    0),
+
+                SongInfo(
+                "Wishing Well",
+                "Juice WRLD",
+                "3:22",
+            "wishingwell_background.jpg",
+            "wishingwell.mp3",
+                    1),
+
+        SongInfo(
+            "Crossing Field",
+            "LiSA",
+            "4:11",
+            "newBG.jpg",
+            "crossingfield.mp3",
+            2)
+
 
     )
     //EEE

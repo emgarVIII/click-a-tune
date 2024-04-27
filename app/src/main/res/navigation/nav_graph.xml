@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_songSelectFragment2"
+            app:destination="@id/songSelectFragment" />
     </fragment>
 
     <fragment
@@ -35,7 +38,23 @@
         android:label="Song Select Screen"
         tools:layout="@layout/fragment_songselect">
         <!-- actions from SongSelectFragment if needed -->
+        <action
+            android:id="@+id/action_songSelectFragment_to_playFragment"
+            app:destination="@id/playFragment" />
+        <action
+            android:id="@+id/action_songSelectFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/playFragment"
+        android:name="com.emgar.click_a_tune.PlayFragment"
+        android:label="Play Screen"
+        tools:layout="@layout/play_fragment">
+
+        <action
+            android:id="@+id/action_playFragment_to_songSelectFragment"
+            app:destination="@id/songSelectFragment" />
+    </fragment>
 
 </navigation>

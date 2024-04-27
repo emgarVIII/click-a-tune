@@ -29,9 +29,13 @@ class SongSelectFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.buttonLogin.setOnClickListener {
-//            findNavController().navigate(R.id.)
-//        }
+
+        binding.buttonBack.setOnClickListener {
+            findNavController().navigate(R.id.action_songSelectFragment_to_welcomeFragment)
+        }
+        binding.buttonPlay.setOnClickListener {
+            findNavController().navigate(R.id.action_songSelectFragment_to_playFragment)
+        }
     }
 
     override fun onDestroyView() {
