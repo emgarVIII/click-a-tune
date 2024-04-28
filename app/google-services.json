@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "204333433869",
+    "project_id": "click-a-tune-c6cb1",
+    "storage_bucket": "click-a-tune-c6cb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204333433869:android:7a4b9ff5edef621d308144",
+        "android_client_info": {
+          "package_name": "com.emgar.click_a_tune"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0Meq8vHbWb4zpKRw1QJ3sHslq2NhuJLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

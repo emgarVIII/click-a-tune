@@ -36,7 +36,7 @@ class GameController(
                     nextBeatIndex++
                 }
 
-                scoreView.post { scoreView.text = "Multiplier: $score" }
+                scoreView.post { scoreView.text = "Score: $score" }
                 timeView.post { timeView.text = "Multiplier: x$streak"}
                     delay(50) // Check every 50 ms
             }
